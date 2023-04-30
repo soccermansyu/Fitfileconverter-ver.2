@@ -44,40 +44,6 @@ def load_fit_tmp(path):
         else:
             continue
 
-    if "position_lat" in df.columns:
-        df = df.drop("position_lat", axis=1)
-    if "position_long" in df.columns:
-        df = df.drop("position_long", axis=1)
-    if "fractional_cadence" in df.columns:
-        df = df.drop("fractional_cadence", axis=1)
-
-    df = df.dropna(how="any")
-    df = df.rename(columns={
-        'timestamp': '時刻',
-        'distance': '累積距離[m]',
-        'accumulated_power': 'パワー累積[W]',
-        'enhanced_speed': '速度[m/s]',
-        'enhanced_altitude': '高度[m]',
-        'stance_time':'接地時間[ms]',
-        'power': 'パワー[W]',
-        'stance_time_balance': '接地バランス(左)[%]',
-        'vertical_oscillation': '上下動[m]',
-        'stance_time_percent': '接地時間%',
-        'vertical_ratio': '上下動率[%]',
-        'step_length': 'ストライド[m]',
-        'heart_rate': '心拍数[bpm]',
-        'cadence': 'ピッチ[歩/分]',
-        'temperature': '気温[℃]',
-        'activity_type': 'アクティビティタイプ'
-    })
-    df['ピッチ[歩/分]'] *= 2
-    df["時刻"] = pd.to_datetime(df["時刻"]).dt.tz_convert('Asia/Tokyo').astype(str).str[:19]
-
-    if '接地バランス(左)[%]' in df.columns:
-        df['接地バランス(右)[%]'] = 100 - df['接地バランス(左)[%]']
-        df['上下動[m]'] = df['上下動[m]'] / 1000
-        df['ストライド[m]'] = df['ストライド[m]'] / 1000
-
     return df
 
 @st.cache
