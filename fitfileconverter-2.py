@@ -27,24 +27,21 @@ def load_fit_tmp(path):
     datas = []
     with fitdecode.FitReader(path) as fit:
         for frame in fit:
-
             if isinstance(frame, fitdecode.FitDataMessage):
                 if frame.name == 'record':
                     data = {}
                     for field in frame.fields:
                         data[field.name] = field.value
-                        #data[field.name + '_units'] = field.units
                     datas.append(data)
 
-# データクレンジング
+    # データクレンジング
     df = pd.DataFrame(datas)
-    for del_name in df.columns:
-        if "unknown" in del_name:
-            df =  df.drop(del_name, axis=1)
-        else:
-            continue
+    for col_name in df.columns:
+        if 'unknown' in col_name:
+            df = df.drop(col_name, axis=1)
 
     return df
+
 
 @st.cache
 def convert_df(df):
