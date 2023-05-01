@@ -16,7 +16,7 @@ import streamlit as st
 
 current_dir = os.path.dirname(__file__)
 
-st.title("ガーミン アクティビティデータのFitファイル変換をCSVへ変換")
+st.title("ガーミン アクティビティデータのFitファイルをCSVへ変換")
 st.write("このアプリケーションは、ガーミンのアクティビティデータ変換アプリです。\n")
 st.write("ランニングデータも変換することが可能です。\n")
 st.write("次のリンク先アプリは、ランニングデータ専用となっており、\n")
