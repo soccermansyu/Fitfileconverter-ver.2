@@ -22,6 +22,9 @@ st.write("ランニングデータも変換することが可能です。\n")
 st.write("次のリンク先アプリは、ランニングデータ専用となっており、\n")
 st.write("列名が日本語に変換されています。\n")
 st.write("URL(https://soccermansyu-garmin-fitfileconverter-fitfileconverter-ithts9.streamlit.app/)")
+st.write("本アプリケーションは自作のため、動作不具合がある可能性があります。\n")
+st.write("お問い合わせ・ご要望などがあれば、以下のお問い合わせフォームよりご連絡ください")
+st.write("URL(https://shuichi-running.com/contact/)")
 st.write("\n\n")
 
 def load_fit_tmp(path):
