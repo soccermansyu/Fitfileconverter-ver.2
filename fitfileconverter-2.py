@@ -74,7 +74,7 @@ def calc_tmp(df):
     this is an only sample function
     you should define process for your purpose
     """
-    df = df.loc[0:, :]
+    df = df.iloc[:, :]  # dfの全ての行と全ての列を選択
     return df
 
 # upload .fit file
