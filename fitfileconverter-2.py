@@ -55,9 +55,11 @@ def load_fit_tmp(path):
         df = df.drop("position_long", axis=1)
     if "fractional_cadence" in df.columns:
         df = df.drop("fractional_cadence", axis=1)
-    df["timestamp"] = pd.to_datetime(df["timestamp"]).dt.tz_convert('Asia/Tokyo').astype(str).str[:19]
+    if "timestamp" in df.columns:
+        df["timestamp"] = pd.to_datetime(df["timestamp"]).dt.tz_convert('Asia/Tokyo').astype(str).str[:19]
 
     return df
+
 
 @st.cache
 def convert_df(df):
